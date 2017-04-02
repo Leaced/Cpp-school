@@ -29,7 +29,8 @@ int main()
 	
 	//Wenn amount oberhalb von 500000 ist, würde das Programm beim Erstellen des Arrays abstürzen.
 	//Dies lässt sich lösen indem man kein Array anlegt,
-	//sondern die Teilersumme jeder Teilersumme von Zahlen ab 220 darauf überprüft ob sie mit der jeweiligen Zahl identisch sind
+	//sondern die Teilersumme jeder Teilersumme von Zahlen ab 220 darauf überprüft ob sie mit der jeweiligen Zahl identisch sind.
+	//Das Programm dazu existiert bereits unte dem Namen "befreundete Zahlen 2".
 	
 	if(amount>500000) amount = 500000;
 	
