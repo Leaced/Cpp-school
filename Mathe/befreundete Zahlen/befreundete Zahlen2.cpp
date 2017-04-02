@@ -7,7 +7,7 @@ int main()
 	std::string input;
 	unsigned long long max;
 	
-	std::cout << "Geben sie an bis zu welcher Zahl nach befreundeten Zahlen gesucht werden soll: ";
+	std::cout << "Gib an bis zu welcher Zahl nach befreundeten Zahlen gesucht werden soll: ";
 	
 	getline(std::cin, input);
 	std::stringstream(input) >> max;
