@@ -2,7 +2,7 @@
 #include<string>
 #include<sstream>
 
-//Der Body-Mass-Index (BMI) – auch Körpermasseindex (KMI), Körpermassenzahl (KMZ) oder Quetelet-Kaup-Index – ist eine Maßzahl für die Bewertung des Körpergewichts eines Menschen in Relation zu seiner Körpergröße.
+//Der Body-Mass-Index (BMI) â€“ auch KÃ¶rpermasseindex (KMI), KÃ¶rpermassenzahl (KMZ) oder Quetelet-Kaup-Index â€“ ist eine MaÃŸzahl fÃ¼r die Bewertung des KÃ¶rpergewichts eines Menschen in Relation zu seiner KÃ¶rpergrÃ¶ÃŸe.
 
 int main()
 {
@@ -13,17 +13,17 @@ int main()
 	getline(std::cin,input);
 	std::stringstream(input)>>height;
 	
-	if(height<=0)
+	if(height<=0 || height>2.5)
 	{
 		std::cout<<"ERROR: Die eingegebene Gr\x94\xE1 \be ist nicht m\x94glich.";
 		return(1);
 	}
 	
-	std::cout<<"...und jetzt dein Gewicht: ";
+	std::cout<<"...und jetzt dein Gewicht in Kilogramm: ";
 	getline(std::cin,input);
 	std::stringstream(input)>>weight;
 	
-	if(weight<=0)
+	if(weight<=0 || weight>500)
 	{
 		std::cout<<"ERROR: Das eingegebene Gewicht ist nicht m\x94glich.";
 		return(1);
