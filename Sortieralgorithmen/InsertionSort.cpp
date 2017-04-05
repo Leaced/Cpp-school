@@ -26,7 +26,7 @@ int main()
 	std::cout << "\n";
 	
 	for(unsigned short idx = 0; idx<amount-1; idx++) std::cout << array[idx] <<", ";
-	std::cout << array[amount-1] << "\n"; //Ausgabe des unsortierten Arrays
+	std::cout << array[amount-1] << "\n"; //Ausgabe des Arrays nach jedem Sortierungsschritt
 	
 	for(unsigned short idx = 1; idx < amount; idx++)
 	{
