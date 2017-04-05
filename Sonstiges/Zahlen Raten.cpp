@@ -4,7 +4,7 @@
 #include<conio.h>
 #include<string>
 #include<sstream>
-using namespace std;
+
 int main()
 {	
 	bool again = true;
@@ -24,7 +24,7 @@ int main()
 			{
 				tries++;
 				getline(std::cin, input);
-				stringstream(input) >> number;
+				std::stringstream(input) >> number;
 				if(number<1 || number>100) std::cout << "Die eingegebene Zahl liegt nicht im Wertebereich. Gib eine Zahl zwischen 1 und 100 ein: ";
 			}while(number<1 || number>100);
 			
@@ -35,7 +35,7 @@ int main()
 		//Zusatzaufgabe: Berechne die minimal notwendige Anzahl an Versuchen
 		std::cout << "\nTreffer! Du hast " << tries << " Versuche gebraucht.\nWenn du ein 2. mal spielen m\x94 \bchtest, gib \"1\" ein. Zum beenden w\x84hle eine beliebige Eingabe: ";
 		getline(std::cin, input);
-		stringstream(input) >> randNumber;	
+		std::stringstream(input) >> randNumber;	
 		if(randNumber == 1) again = true;
 		std::cout << "\n\n";
 	}

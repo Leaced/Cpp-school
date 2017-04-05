@@ -4,7 +4,7 @@
 
 int main()
 {
-	long long depth;
+	long long depth = 1;
 	std::string input;
 	
 	std::cout << "Geben sie die Tiefe ein: ";
@@ -12,7 +12,7 @@ int main()
 	{
 		getline(std::cin, input);
 		std::stringstream(input) >> depth;
-		if(depth<2)std::cout << "ERROR: Die Zahl muss größer als 1 sein. Geben sie die Tiefe erneut ein: ";		
+		if(depth<2)std::cout << "ERROR: Die Zahl muss gr\x94\xE1 \ber als 1 sein. Geben sie die Tiefe erneut ein: ";		
 	}while(depth<2);
 	
 	for(long long idx = 0;  idx<depth*depth;  idx++)

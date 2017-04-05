@@ -1,8 +1,9 @@
 #include<iostream>
+#include<conio.h>
 #include<string>
 #include<sstream>
 
-//Der Body-Mass-Index (BMI) â€“ auch KÃ¶rpermasseindex (KMI), KÃ¶rpermassenzahl (KMZ) oder Quetelet-Kaup-Index â€“ ist eine MaÃŸzahl fÃ¼r die Bewertung des KÃ¶rpergewichts eines Menschen in Relation zu seiner KÃ¶rpergrÃ¶ÃŸe.
+//Der Body-Mass-Index (BMI) - auch Körpermasseindex (KMI), Körpermassenzahl (KMZ) oder Quetelet-Kaup-Index - ist eine Maßzahl für die Bewertung des Körpergewichts eines Menschen in Relation zu seiner Körpergröße.
 
 int main()
 {
@@ -10,27 +11,24 @@ int main()
 	std::string input;
 	
 	std::cout<<"Gib deine Gr\x94\xE1 \be in metern ein: ";
-	getline(std::cin,input);
-	std::stringstream(input)>>height;
-	
-	if(height<=0 || height>2.5)
+	do
 	{
-		std::cout<<"ERROR: Die eingegebene Gr\x94\xE1 \be ist nicht m\x94glich.";
-		return(1);
-	}
+		getline(std::cin,input);
+		std::stringstream(input)>>height;
+		if(height<0,5 || height>2.5) std::cout<<"ERROR: Die eingegebene Gr\x94\xE1 \be ist nicht im Wertebereich. Bitte gib eine Gr\x94\xE1 \be von 0,5 bis 2,5 ein: ";
+	}while(height<0,5 || height>2.5);
 	
 	std::cout<<"...und jetzt dein Gewicht in Kilogramm: ";
-	getline(std::cin,input);
-	std::stringstream(input)>>weight;
 	
-	if(weight<=0 || weight>500)
+	do
 	{
-		std::cout<<"ERROR: Das eingegebene Gewicht ist nicht m\x94glich.";
-		return(1);
-	}
+		getline(std::cin,input);
+		std::stringstream(input)>>weight;
+		if(weight<30 || weight>500) std::cout<<"ERROR: Das eingegebene Gewicht ist nicht im Wertebereich. Bitte gib ein Gewicht von 30 bis 500 ein: ";
+	}while(weight<30 || weight>500);
 	
 	std::cout<<"\nDein BMI ist: "<<weight/(height*height);
 	
-	getchar();
+	getch();
 	return(0);
 }
