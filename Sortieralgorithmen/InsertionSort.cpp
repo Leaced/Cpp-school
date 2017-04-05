@@ -26,7 +26,7 @@ int main()
 	std::cout << "\n";
 	
 	for(unsigned short idx = 0; idx<amount-1; idx++) std::cout << array[idx] <<", ";
-	std::cout << array[amount-1] << "\n";
+	std::cout << array[amount-1] << "\n"; //Ausgabe des unsortierten Arrays
 	
 	for(unsigned short idx = 1; idx < amount; idx++)
 	{
@@ -34,11 +34,10 @@ int main()
 		int idx2 = idx - 1;
 	
 		while(idx2>=0 && array[idx2]>temp) array[idx2+1] = array[idx2--];
-	
 		array[idx2+1] = temp;
 		
 		for(unsigned short idx =0; idx<amount-1; idx++) std::cout << array[idx] << ", ";
-		std::cout << array[amount-1] << "\n";
+		std::cout << array[amount-1] << "\n"; //Ausgabe des sortierten Arrays
 	}
 	
 	getch();
