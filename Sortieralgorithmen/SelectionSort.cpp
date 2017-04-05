@@ -26,12 +26,12 @@ int main()
 	std::cout << "\n";
 	
 	for(unsigned short idx =0; idx<amount-1; idx++) std::cout << array[idx] << ", ";
-	std::cout << array[amount-1] << "\n"; 
+	std::cout << array[amount-1] << "\n"; //Ausgabe des unsortierten Arrays
 	
 	for(unsigned short idx = 0;  idx<amount-1; idx++)
 	{
 		unsigned short indexMin = idx;
-		for(unsigned short idx2 = idx+1;  idx2<amount;  idx2++) if(array[idx2]<array[indexMin]) indexMin = idx2;
+		for(unsigned short idx2 = idx+1; idx2<amount; idx2++) if(array[idx2]<array[indexMin]) indexMin = idx2;
 		
 		if(indexMin!=idx)
 		{
@@ -41,7 +41,7 @@ int main()
 		}
 		
 		for(unsigned short idx =0; idx<amount-1; idx++) std::cout << array[idx] << ", ";
-		std::cout << array[amount-1] << "\n";
+		std::cout << array[amount-1] << "\n"; //Ausgabe des Arrays nach jedem Sortierungsschritt
 	}
 	
 	getch();
