@@ -8,7 +8,6 @@ int main()
 	std::string input;
 	
 	std::cout << "Geben sie die Tiefe ein: ";
-	
 	do
 	{
 		getline(std::cin, input);
