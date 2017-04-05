@@ -2,7 +2,7 @@
 #include<string>
 #include<sstream>
 
-//Dieses Programm berechnet wann sich 2 Autos auf einer Straﬂe treffen wobei die Geschwindigkeit beider Autos schrittweise erhˆht werden kann.
+//Dieses Programm berechnet wann sich 2 Autos auf einer Stra√üe treffen wobei die Geschwindigkeit beider Autos schrittweise erh√∂ht werden kann.
 
 int main()
 {
@@ -10,15 +10,12 @@ int main()
 	long double speed, distance, speedOppositeTrack, position;
 	
 	std::cout << "Geben sie die Strecke der Landstra\xE1 \be in km ein: ";
-	getline(std::cin, input);
-	std::stringstream(input) >> distance;
-	
-	if(0>distance)
+	do
 	{
-		std::cout << "\nERROR: Die Strecke muss gr\x94\xE1 \ber als 0 km sein";
-		getchar();
-		return(1);
-	}
+		getline(std::cin, input);
+		std::stringstream(input) >> distance;
+		if(distance<0)std::cout << "\nERROR: Die Strecke muss gr\x94\xE1 \ber als 0 km sein. Gebe die Strecke erneut ein: ";	
+	}while(distance<0);
 	
 	
 	std::cout << "Geben sie ihre Startgeschwindigkeit in km/h ein: ";
@@ -43,9 +40,9 @@ int main()
 		return(1);
 	}
 	
-	std::cout << "\nGib nach jeder Ausgabe +/- ein um deine Geschwindigkeit um 5 km/h zu verringern oder erhˆhen\nSie begegnen unterwegs folgenden Autos:\n";
+	std::cout << "\nGib nach jeder Ausgabe +/- ein um deine Geschwindigkeit um 5 km/h zu verringern oder erh√∂hen\nSie begegnen unterwegs folgenden Autos:\n";
 	
-	for(long double time = distance/(speed+speedOppositeTrack), position = time*speed;  position<=distance;  position += speedOppositeTrack/(120*(speed+speedOppositeTrack))*speed, time += speedOppositeTrack/(120*(speed+speedOppositeTrack)))  //Formel f¸r t nicht ausreichend.
+	for(long double time = distance/(speed+speedOppositeTrack), position = time*speed;  position<=distance;  position += speedOppositeTrack/(120*(speed+speedOppositeTrack))*speed, time += speedOppositeTrack/(120*(speed+speedOppositeTrack)))  //Formel f√ºr t nicht ausreichend.
 	{
 		if(position>ULLONG_MAX)
 		{
