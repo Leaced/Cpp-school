@@ -8,15 +8,13 @@ int main()
 	std::string input;
 	
 	std::cout << "Geben sie die Tiefe ein: ";
-	getline(std::cin, input);
-	std::stringstream(input) >> depth;
 	
-	if(depth<2)
+	do
 	{
-		std::cout << "ERROR: Zahl muss größer als 1 sein.";
-		getchar();
-		return(1);
-	}
+		getline(std::cin, input);
+		std::stringstream(input) >> depth;
+		if(depth<2)std::cout << "ERROR: Die Zahl muss grÃ¶ÃŸer als 1 sein. Geben sie die Tiefe erneut ein: ";		
+	}while(depth<2);
 	
 	for(long long idx = 0;  idx<depth*depth;  idx++)
 	{
