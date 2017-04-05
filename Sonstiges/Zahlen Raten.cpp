@@ -19,10 +19,14 @@ int main()
 		std::cout << "Errate die richtige Zahl zwischen 1 und 100: ";
 		
 		while(number!=randNumber)
-		{
-			tries++;
-			getline(std::cin, input);
-			stringstream(input) >> number;
+		{		
+			do
+			{
+				tries++;
+				getline(std::cin, input);
+				stringstream(input) >> number;
+				if(number<1 || number>100) std::cout << "Die eingegebene Zahl liegt nicht im Wertebereich. Gib eine Zahl zwischen 1 und 100 ein: ";
+			}while(number<1 || number>100);
 			
 			if(number<randNumber) std::cout << "\nDie eingegebene Zahl ist zu klein! Versuche es erneut: ";		
 			else if(number>randNumber) std::cout << "\nDie eingegebene Zahl ist zu gro\xE1! Versuche es erneut: ";		
