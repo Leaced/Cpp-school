@@ -3,7 +3,7 @@
 #include<string>
 #include<sstream>
 
-//Dieses Programm berechnet wann sich 2 Autos auf einer Straße treffen wobei die Geschwindigkeit beider Autos schrittweise erhöht werden kann.
+//Dieses Programm berechnet wann sich Autos auf einer Straße treffen, welche gleichzeitig losfahren, wobei die Geschwindigkeit eines Autos schrittweise erhöht werden kann und auf der Gegenspur im Abstand von jeweils 30 Sekunden weitere Autos kommen.
 
 int main()
 {
@@ -35,23 +35,20 @@ int main()
 		if(speedOppositeTrack<0 || speedOppositeTrack>200)std::cout << "ERROR: Die Geschwindigkeit muss gr\x94\xE1 \ber als 0 km/h sein und darf 200 km/h nicht \x81 \bberschreiten. Gib die Geschwindigkeit erneut ein: ";
 	}while(speedOppositeTrack<0 || speedOppositeTrack>200);
 	
-	std::cout << "\nGib nach jeder Ausgabe \"+\"/\"-\" ein um deine Geschwindigkeit um 5 km/h zu verringern oder erh\x94 \bhen\nDie Autos treffen sich wie folgt:\n";
+	std::cout << "\nGib nach jeder Ausgabe \"+\",\"-\" oder \"\" ein um deine Geschwindigkeit um 5 km/h zu verringern oder erh\x94 \bhen oder die Geschwindigkeit konstant zu halten.\nDie Autos treffen sich wie folgt:\n";
 	
-	for(long double time = distance/(speed+speedOppositeTrack), position = time*speed;  position<=distance;  position += speedOppositeTrack/(120*(speed+speedOppositeTrack))*speed, time += speedOppositeTrack/(120*(speed+speedOppositeTrack)))  //Formel fÃ¼r t nicht ausreichend.
+	for(long double time = distance/(speed+speedOppositeTrack), position = time*speed;  position<=distance && position<=ULLONG_MAX && -speed<speedOppositeTrack;  position += speedOppositeTrack/(120*(speed+speedOppositeTrack))*speed && position, time += speedOppositeTrack/(120*(speed+speedOppositeTrack)))  //Formel für t nicht ausreichend.
 	{
-		if(position>ULLONG_MAX)
-		{
-			std::cout << "ERROR: Begegnung kann nicht berechnet werden.";
-			break;
-		}
-		
 		std::cout << (int)time << "h:" << (int)(time*60)%60 << "min:" << (int)(time*3600)%60 << "sec:	" << position << "km  	";
 		
 		getline(std::cin, input);
-		
 		if(input=="+") speed += 5;
 		else if(input=="-") speed -= 5;
-		if(-speed>speedOppositeTrack) break;
+	}
+	
+	if(position>ULLONG_MAX)
+	{
+		std::cout << "ERROR: Begegnung kann nicht berechnet werden.";
 	}
 	
 	std::cout << "PROGRAMMENDE!";
