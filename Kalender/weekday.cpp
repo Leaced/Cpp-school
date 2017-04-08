@@ -5,60 +5,40 @@
 
 int main()
 {
+	//Aufgabe: Kombiniere dieses Programm mit dem jeweils anderen im Kalender Ordner.
+	
 	std::string input;
-	short day, month, daysInMonth[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}, weekday, year;
+	unsigned short day = 0, month = 0, daysInMonth[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}, year = 0;
 	
-	std::cout << "Gib das Tagesdatum ein: ";
-	getline(std::cin, input);
-	std::stringstream(input) >> day;
-	
-	if(day==0 || day>31)
+	std::cout << "Gib den Tag des Monats ein: ";
+	do
 	{
-		std::cout << "\nERROR: Das eingegebene Tagesdatum existiert nicht.";
-		getch();
-		return(1);
-	}
+		getline(std::cin, input);
+		std::stringstream(input) >> day;
+		if(day>31 || day<1) std::cout << "ERROR: Der eingegebene Tag existiert nicht. Gib einen Tag zwischen 1 und 31 ein: ";
+	}while(day>31 || day<1);
 	
-	std::cout << "Gib den Monat ein: ";
-	getline(std::cin, input);
-	std::stringstream(input) >> month;
-	
-	if(daysInMonth[month-1]<day)
+	std::cout << "Gib den Monat ein: ";	
+	do
 	{
-		std::cout << "\nERROR: Der eingegebene Monat hat keine " << day << " Tage.";
-		getch();
-		return(1);
-	}
+		getline(std::cin, input);
+		std::stringstream(input) >> month;
+		if(month>12 || month<1) std::cout << "ERROR: Der eingegebene Monat existiert nicht. Gib einen Monat zwischen 1 und 12 ein: ";
+		else if(day>daysInMonth[month-1]) std::cout << "ERROR: Der eingegebene Monat hat nicht genug Tage. Gib einen anderen Monat ein: ";
+	}while(month>12 || month<1 || day>daysInMonth[month-1]);
 	
-	if(month>12 || month==0)
+	std::cout << "Gib das Jahr ein: ";
+	do
 	{
-		std::cout << "\nERROR: Der eingegebene Tag existiert nicht.";
-		getch();
-		return(1);
-	}
+		getline(std::cin, input);
+		std::stringstream(input) >> year;
+		if(year<0) std::cout << "ERROR: Das Datum liegt vor dem 1. Januar 0. Gib ein Jahr nach dem 1. Januar 00 ein: ";
+		else if(day==29 && month == 2 && (year%4!=0 || year%100==0 && year%400!=0)) std::cout << "ERROR: Die bereits erfolgten Eingaben benötigen ein Schaltjahr. Gib ein anderes Jahr ein: ";
+	}while(year<0 || day==29 && month == 2 && (year%4!=0 || year%100==0 && year%400!=0));
 	
-	std::cout << "Gib das jahr ein: ";
-	getline(std::cin, input);
-	std::stringstream(input) >> year;
-	
-	if(year>10000 || year<0)
-	{
-		std::cout << "\nERROR: Im eingegeben Jahr lässt sich der Wochentag nicht ermitteln.";
-		getch();
-		return(1);
-	}
-	
-	if(day==29 && month==2 && (year%4!=0 || year%100==0))
-	{
-		std::cout << "\nERROR: Die Eingaben ben\x94tigen ein Schaltjahr.";
-		getch();
-		return(1);
-	}
-	
-	std::cout << "\nDer " << day << "." << month << "." << year << " war ein ";
+	std::cout << "\nDer " << day << "." << month << "." << year << " ist ein ";
 	
 	if(month==1 || month==2) year -=1;
-	
 	if(month==1) month = 0;
 	else if(month==8) month = 1;
 	else if(month==2 || month==6) month = 3;
@@ -67,16 +47,15 @@ int main()
 	else if(month == 10) month = 6;
 	else month = 2;
 	
-	weekday = (day+month+(year%100)+(year%100/4)+year/400-2*(year/100))%7;
+	day = (day+month+(year%100)+(year%100/4)+year/400-2*(year/100))%7;
 	
-	while(weekday<0) weekday += 7;
-	
-	if(weekday==0) std::cout << "Sonntag";
-	else if(weekday==1) std::cout << "Montag";
-	else if(weekday==2) std::cout << "Dienstag";
-	else if(weekday==3) std::cout << "Mittwoch";
-	else if(weekday==4) std::cout << "Donnerstag";
-	else if(weekday==5) std::cout << "Freitag";
+	while(day<0) day += 7;
+	if(day==0) std::cout << "Sonntag";
+	else if(day==1) std::cout << "Montag";
+	else if(day==2) std::cout << "Dienstag";
+	else if(day==3) std::cout << "Mittwoch";
+	else if(day==4) std::cout << "Donnerstag";
+	else if(day==5) std::cout << "Freitag";
 	else std::cout << "Samstag";
 	
 	getch();
