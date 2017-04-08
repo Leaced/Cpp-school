@@ -8,7 +8,7 @@
 int main()
 {
 	std::string input;
-	long double speed, distance, speedOppositeTrack, position;
+	long double speed = 0, distance = 0, speedOppositeTrack = 0, position = 0;
 	
 	std::cout << "Gib die Strecke der Landstra\xE1 \be in km ein: ";
 	do

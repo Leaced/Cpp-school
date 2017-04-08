@@ -6,9 +6,9 @@
 int main()
 {
 	std::string input;
-	unsigned short amount;
+	unsigned short amount = 1;
 	
-	std::cout << "Gib die Anzahl der zahlen ein: ";
+	std::cout << "Gib die Anzahl der Zahlen ein: ";
 	getline(std::cin, input);
 	std::stringstream(input) >> amount;
 	

@@ -7,7 +7,7 @@
 
 int main()
 {
-	long double height, weight;
+	long double height = 0, weight = 0;
 	std::string input;
 	
 	std::cout<<"Gib deine Gr\x94\xE1 \be in metern ein: ";
