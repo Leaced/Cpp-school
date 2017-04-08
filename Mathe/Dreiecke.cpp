@@ -2,6 +2,7 @@
 #include<sstream>
 #include<string>
 #include<math.h>
+#include<conio.h>
 
 #define PI 3.14159
 
@@ -150,6 +151,6 @@ int main()
 	std::cout << "\nbeta:			" << beta/PI << " pi	" << beta*180/PI << "\xF8";
 	std::cout << "\ngamma:			" << gamma/PI << " pi	" << gamma*180/PI << "\xF8";
 	
-	getchar();
+	getch();
 	return(0);
 }

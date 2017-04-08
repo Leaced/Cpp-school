@@ -1,11 +1,12 @@
 #include<iostream>
 #include<string>
 #include<sstream>
+#include<conio.h>
 
 int main()
 {
 	std::string input;
-	unsigned long long max;
+	unsigned long long max = 1;
 	
 	std::cout << "Gib an bis zu welcher Zahl nach befreundeten Zahlen gesucht werden soll: ";
 	
@@ -15,7 +16,7 @@ int main()
 	if(max<284)
 	{
 		std::cout << "\nEs wurden keine befreundeten Zahlen gefunden.";
-		getchar();
+		getch();
 		return(0);
 	}
 	
@@ -31,6 +32,6 @@ int main()
 		if(sum2==number) std::cout << sum << "	und	" << sum2 << "\n";
 	}
 	
-	getchar();
+	getch();
 	return(0);
 }

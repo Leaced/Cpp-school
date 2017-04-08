@@ -10,7 +10,7 @@
 int main()
 {
 	std::string input;
-	unsigned int amount;
+	unsigned int amount = 0;
 	
 	std::cout << "Gib an bis zu welcher Zahl nach befreundeten Zahlen gesucht werden soll: ";
 	getline(std::cin, input);
