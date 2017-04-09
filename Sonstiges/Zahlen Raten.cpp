@@ -33,10 +33,9 @@ int main()
 		}
 		
 		//Zusatzaufgabe: Berechne die minimal notwendige Anzahl an Versuchen
-		std::cout << "\nTreffer! Du hast " << tries << " Versuche gebraucht.\nWenn du ein 2. mal spielen m\x94 \bchtest, gib \"1\" ein. Zum beenden w\x84hle eine beliebige Eingabe: ";
+		std::cout << "\nTreffer! Du hast " << tries << " Versuche gebraucht.\nM\x94 \bchtest du ein 2. mal spielen? y/n ";
 		getline(std::cin, input);
-		std::stringstream(input) >> randNumber;	
-		if(randNumber == 1) again = true;
+		if(input == "y" || input == "Y") again = true;
 		std::cout << "\n\n";
 	}
 	
