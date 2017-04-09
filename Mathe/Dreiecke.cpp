@@ -9,97 +9,74 @@
 int main()
 {
 	std::string input;
-	long double a = 0, b = 0, c = 0, alpha = 0, beta = 0, gamma = 0;
+	long double a, b, c, alpha, beta, gamma;
 	
 	std::cout << "F\x81ge deiner Eingabe \"\xF8\" hinzu um einen Winkel im Gradma\xE1 einzugeben.\n\nGib Seite a oder Winkel alpha ein: ";
-	getline(std::cin, input);
-	
-	for(char cha : input) if(cha=='\xF8') a++;
-	
-	if(a!=0)
+	do
 	{
-		std::stringstream(input) >> alpha;
+		a = 0; alpha = 0;
+		getline(std::cin, input);
+		for(char cha : input) if(cha=='\xF8') a++;
 		
-		if(alpha>180 || alpha==0)
+		if(a==1)
 		{
-			std::cout << "ERROR: Mit dem angegebenen Winkel lässt sich kein Dreieck konstruieren.";
-			return(1);
+			a = 0;
+			std::stringstream(input) >> alpha;
+			alpha = alpha/180*PI;
+			if(alpha>=PI || alpha<=0) std::cout << "ERROR: Mit dem eingegebenen Winkel l\x84sst sich kein Dreieck konstruieren. Gib alpha oder a erneut ein: ";
 		}
-		
-		alpha = alpha/180*PI;
-		a = 0;
-	}
-	else std::stringstream(input) >> a;
-	
-	if(a+alpha<0)
-	{
-		std::cout << "ERROR: Konstruktion eines Dreiecks mit negativen Werten nicht m\x94glich.";
-		return(1);
-	}
-	
-	std::cout << "Gib Seite b oder Winkel beta ein: ";
-	getline(std::cin, input);
-
-	for(char cha : input) if(cha=='\xF8') b++;
-	
-	if(b!=0)
-	{
-		std::stringstream(input) >> beta;
-		
-		if(beta>180 || beta==0)
+		else
 		{
-			std::cout << "ERROR: Mit dem angegebenen Winkel lässt sich kein Dreieck konstruieren.";
-			return(1);
+			std::stringstream(input) >> a;
+			if(a<=0) std::cout << "ERROR: a muss gr\x94\xE1 \ber als 0 sein. Gib a oder alpha erneut ein: ";
 		}
-		
-		beta = beta/180*PI;
-		b = 0;
-	}
-	else std::stringstream(input) >> b;
+	}while(alpha>=PI || a+alpha<=0);
 	
-	if(b+beta<0)
+	std::cout << "\nGib Seite b oder Winkel beta ein: ";
+	do
 	{
-		std::cout << "ERROR: Konstruktion eines Dreiecks mit negativen Werten nicht m\x94glich.";
-		return(1);
-	}
-	
-	std::cout << "Gib Seite c oder Winkel gamma ein: ";
-	getline(std::cin, input);
-	
-	for(char cha : input) if(cha=='\xF8') c++;
-	
-	if(c!=0)
-	{
-		std::stringstream(input) >> gamma;
+		b = 0; beta = 0;
+		getline(std::cin, input);
+		for(char cha : input) if(cha=='\xF8') b++;
 		
-		if(gamma>180 || gamma==0)
+		if(b!=0)
 		{
-			std::cout << "ERROR: Mit dem angegebenen Winkel lässt sich kein Dreieck konstruieren.";
-			return(1);
+			b = 0;
+			std::stringstream(input) >> beta;
+			beta = beta/180*PI;
+			if(alpha+beta>=PI || beta<=0) std::cout << "ERROR: Mit den eingegebenen Winkeln l\x84sst sich kein Dreieck konstruieren. Gib beta oder b erneut ein: ";
 		}
+		else
+		{
+			std::stringstream(input) >> b;
+			if(b<=0) std::cout << "ERROR: b muss gr\x94\xE1 \ber als 0 sein. Gib b oder beta erneut ein: ";
+		}
+	}while(alpha+beta>=PI || b+beta<=0);
+	
+	std::cout << "\nGib Seite c oder Winkel gamma ein: ";
+	do
+	{
+		c = 0; gamma = 0;
+		getline(std::cin, input);
+		for(char cha : input) if(cha=='\xF8') c++;
 		
-		gamma = gamma/180*PI;
-		c = 0;
-	}
-	else std::stringstream(input) >> c;
-	
-	if(c+gamma<0)
-	{
-		std::cout << "ERROR: Konstruktion eines Dreiecks mit negativen Werten nicht m\x94glich.";
-		return(1);
-	}
-	
-	if(alpha!=0 && beta!=0 && gamma!=0)
-	{
-		std::cout << "ERROR: Der Kongruenzsatz WWW existiert nicht.";
-		return(1);
-	}
-	
-	if(alpha+beta+gamma>=PI)
-	{
-		std::cout << "ERROR: Die Winkelsumme \x81 \bbersteigt 180\xF8";
-		return(1);
-	}
+		if(c!=0)
+		{
+			c = 0;
+			if(alpha!=0 && beta!=0) std::cout << "ERROR: Der Kongruenzsatz WWW existiert nicht. Gib gamma oder c erneut ein: ";
+			else
+			{
+				std::stringstream(input) >> gamma;
+				gamma = gamma/180*PI;
+				if(alpha+beta+gamma>=PI || gamma<=0) std::cout << "ERROR: Mit den eingegebenen Winkeln l\x84sst sich kein Dreieck konstruieren. Gib gamma oder c erneut ein: ";
+			}
+		}
+		else
+		{
+			std::stringstream(input) >> c;
+			if(c<=0) std::cout << "ERROR: c muss gr\x94\xE1 \ber als 0 sein. Gib c oder gamma erneut ein: ";
+		}
+	}while(alpha+beta+gamma>PI || c+gamma<=0);
 	
 	if(alpha!=0 && beta!=0 || alpha!=0 && gamma!=0 || beta!=0 && gamma!=0) //WSW
 	{
@@ -124,7 +101,7 @@ int main()
 			b = c*sin(beta)/sin(gamma);
 		}
 		
-		if(alpha==beta && beta==gamma) //fängt den Sondefall eines gleichseitigen Dreiecks ab, welcher mit der obigen Methode nicht korrekt berechnet wird.
+		if(alpha==beta && beta==gamma) //fängt den Sondefall eines gleichseitigen Dreiecks ab, welcher mit der obigen Methode nicht exakt berechnet wird.
 		{
 			a = a+b+c;
 			b = a;
