@@ -2,6 +2,8 @@
 #include<conio.h>
 #include<string>
 #include<sstream>
+#include<cstdlib>
+#include<ctime>
 
 int main()
 {
@@ -12,21 +14,32 @@ int main()
 	getline(std::cin, input);
 	std::stringstream(input) >> amount;
 	
-	std::cout << "\n";
-	
 	long double array[amount];
 	
-	for(unsigned short idx = 0; idx < amount; idx++)
+	std::cout << "\nM\x94 \bchtest du mit zuf\x84lligen Zahlen arbeiten? y/n	";
+	getline(std::cin, input);
+	if(input == "y" || input == "Y")
 	{
-		std::cout << "Gib die " << idx+1 << ". Zahl ein: ";
-		getline(std::cin,input);
-		std::stringstream(input) >> array[idx];
+		srand(time(0));
+		for(unsigned short idx = 0; idx < amount; idx++)
+		{
+			array[idx] = rand()%100;
+		}
+	}
+	else
+	{
+		for(unsigned short idx = 0; idx < amount; idx++)
+		{
+			std::cout << "Gib die " << idx+1 << ". Zahl ein: ";
+			getline(std::cin,input);
+			std::stringstream(input) >> array[idx];
+		}
 	}
 	
 	std::cout << "\n";
 	
 	for(unsigned short idx = 0; idx<amount-1; idx++) std::cout << array[idx] <<", ";
-	std::cout << array[amount-1] << "\n"; //Ausgabe des Arrays nach jedem Sortierungsschritt
+	std::cout << array[amount-1] << "\n"; //Ausgabe des unsortierten Arrays
 	
 	for(unsigned short idx = 1; idx < amount; idx++)
 	{
@@ -37,7 +50,7 @@ int main()
 		array[idx2+1] = temp;
 		
 		for(unsigned short idx =0; idx<amount-1; idx++) std::cout << array[idx] << ", ";
-		std::cout << array[amount-1] << "\n"; //Ausgabe des sortierten Arrays
+		std::cout << array[amount-1] << "\n"; //Ausgabe des Arrays nach jedem Sortierungsschritt
 	}
 	
 	getch();
