@@ -23,7 +23,7 @@ int main()
 	{
 		int *array = new int[amount];
 		srand(time(0));
-		for(unsigned short idx = 0; idx < amount; idx++) array[idx] = rand()%100;
+		for(unsigned short idx = 0; idx < amount; idx++) array[idx] = rand()%1000;
 		SelectionSort(array, amount);
 		delete[] array;
 	}
