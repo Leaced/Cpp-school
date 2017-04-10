@@ -51,13 +51,18 @@ void BubbleSort(int *array, unsigned short amount)
 	for(unsigned short idx = 0; idx+1<amount; idx++) std::cout << array[idx] << ",	";
 	std::cout << array[amount-1] << "\n";	//Ausgabe des unsortierten Arrays
 	
-	for(unsigned short idx = 0; idx<amount-1; idx++)
+	bool changed = true;
+	
+	for(unsigned short idx = 0; idx<amount-1 && changed; idx++)
 	{
+		changed = false;
+		
 		for(unsigned short idx2 = amount-1; idx2>idx; idx2--) if(array[idx2]<array[idx2-1])
 		{
 			int temp = array[idx2-1];
 			array[idx2-1] = array[idx2];
 			array[idx2] = temp;
+			changed = true;
 		}
 		
 		for(unsigned short idx2 = 0; idx2+1<amount; idx2++) std::cout << array[idx2] << ",	";
@@ -72,13 +77,18 @@ void BubbleSort(long double *array, unsigned short amount)
 	for(unsigned short idx = 0; idx+1<amount; idx++) std::cout << array[idx] << ",	";
 	std::cout << array[amount-1] << "\n";	//Ausgabe des unsortierten Arrays
 	
-	for(unsigned short idx = 0; idx<amount-1; idx++)
+	bool changed = true;
+	
+	for(unsigned short idx = 0; idx<amount-1 && changed; idx++)
 	{
+		changed = false;
+		
 		for(unsigned short idx2 = amount-1; idx2>idx; idx2--) if(array[idx2]<array[idx2-1])
 		{
 			int temp = array[idx2-1];
 			array[idx2-1] = array[idx2];
 			array[idx2] = temp;
+			changed = true;
 		}
 		
 		for(unsigned short idx2 = 0; idx2+1<amount; idx2++) std::cout << array[idx2] << ",	";
