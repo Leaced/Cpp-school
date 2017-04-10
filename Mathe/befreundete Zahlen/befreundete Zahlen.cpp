@@ -27,14 +27,7 @@ int main()
 	
 	amount -= 219;
 	
-	//Wenn amount oberhalb von 500000 ist, würde das Programm beim Erstellen des Arrays abstürzen.
-	//Dies lässt sich lösen indem man kein Array anlegt,
-	//sondern die Teilersumme jeder Teilersumme von Zahlen ab 220 darauf überprüft ob sie mit der jeweiligen Zahl identisch sind.
-	//Das Programm dazu existiert bereits unte dem Namen "befreundete Zahlen 2".
-	
-	if(amount>500000) amount = 500000;
-	
-	unsigned int number[amount];
+	unsigned int *number = new unsigned int[amount];
 	
 	for(unsigned long long idx = 0;  idx<amount;  idx++)
 	{
@@ -44,6 +37,8 @@ int main()
 		
 		if(number[idx]<idx+220 && number[idx]>=220 && number[number[idx]-220]==idx+220) std::cout << number[idx] << "	und	" << number[number[idx]-220] << "\n"; 
 	}
+	
+	delete[] number;
 	
 	getch();
 	return(0);
