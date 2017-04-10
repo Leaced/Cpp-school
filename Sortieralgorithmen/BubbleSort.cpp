@@ -23,18 +23,17 @@ int main()
 	{
 		int *array = new int[amount];
 		srand(time(0));
-		for(unsigned short idx = 0; idx < amount; idx++) array[idx] = rand()%1000;
+		for(unsigned short idx = 0; idx < amount; array[idx++] = rand()%1000);
 		BubbleSort(array, amount);
 		delete[] array;
 	}
 	else
 	{
 		long double *array = new long double[amount];
-		for(unsigned short idx = 0; idx < amount; idx++)
+		for(unsigned short idx = 0;  idx < amount;  std::stringstream(input) >> array[idx++])
 		{
 			std::cout << "Gib die " << idx+1 << ". Zahl ein: ";
 			getline(std::cin,input);
-			std::stringstream(input) >> array[idx];
 		}
 		BubbleSort(array, amount);
 		delete[] array;
@@ -60,9 +59,7 @@ void BubbleSort(int *array, unsigned short amount)
 		for(unsigned short idx2 = amount-1; idx2>idx; idx2--) if(array[idx2]<array[idx2-1])
 		{
 			int temp = array[idx2-1];
-			array[idx2-1] = array[idx2];
-			array[idx2] = temp;
-			changed = true;
+			array[idx2-1] = array[idx2], array[idx2] = temp, changed = true;
 		}
 		
 		for(unsigned short idx2 = 0; idx2+1<amount; idx2++) std::cout << array[idx2] << ",	";
@@ -86,9 +83,7 @@ void BubbleSort(long double *array, unsigned short amount)
 		for(unsigned short idx2 = amount-1; idx2>idx; idx2--) if(array[idx2]<array[idx2-1])
 		{
 			int temp = array[idx2-1];
-			array[idx2-1] = array[idx2];
-			array[idx2] = temp;
-			changed = true;
+			array[idx2-1] = array[idx2], array[idx2] = temp, changed = true;
 		}
 		
 		for(unsigned short idx2 = 0; idx2+1<amount; idx2++) std::cout << array[idx2] << ",	";

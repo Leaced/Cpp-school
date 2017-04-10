@@ -46,10 +46,7 @@ int main()
 		else if(input=="-") speed -= 5;
 	}
 	
-	if(position>ULLONG_MAX)
-	{
-		std::cout << "ERROR: Begegnung kann nicht berechnet werden.";
-	}
+	if(position>ULLONG_MAX) std::cout << "ERROR: Begegnung kann nicht berechnet werden.";
 	
 	std::cout << "PROGRAMMENDE!";
 	
