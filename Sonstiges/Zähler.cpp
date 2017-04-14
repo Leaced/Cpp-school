@@ -20,7 +20,10 @@ int main ()
 	
 	if(start<end) for(int idx = start; idx<end; idx++) std::cout << idx << ", ";
 	else for(int idx = start; idx>end; idx--) std::cout << idx << ", ";
-	std::cout << end << "\n\nDie Summe der natuerlichen Zahlen von " << start << " bis " << end << " betraegt: " << (end*(end+1)-start*(start-1))/2;
+	
+	std::cout << end << "\n\nDie Summe der natuerlichen Zahlen von " << start << " bis " << end << " betraegt: ";
+	if(start<end) std::cout << (end*(end+1)-start*(start-1))/2;
+	else std::cout << (end*(end-1)-start*(start+1))/2;
 	
 	getch();
 	return(0);
