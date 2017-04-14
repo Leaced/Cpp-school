@@ -15,7 +15,7 @@ int main()
 	{
 		getline(std::cin,input);
 		std::stringstream(input)>>height;
-		if(height<0,5 || height>2.5) std::cout<<"ERROR: Die eingegebene Gr\x94\xE1 \be ist nicht im Wertebereich. Bitte gib eine Gr\x94\xE1 \be von 0,5 bis 2,5 ein: ";
+		if(height<0,5 || height>2.5) std::cerr<<"ERROR: Die eingegebene Gr\x94\xE1 \be ist nicht im Wertebereich. Bitte gib eine Gr\x94\xE1 \be von 0,5 bis 2,5 ein: ";
 	}while(height<0,5 || height>2.5);
 	
 	std::cout<<"...und jetzt dein Gewicht in Kilogramm: ";
@@ -23,7 +23,7 @@ int main()
 	{
 		getline(std::cin,input);
 		std::stringstream(input)>>weight;
-		if(weight<30 || weight>500) std::cout<<"ERROR: Das eingegebene Gewicht ist nicht im Wertebereich. Bitte gib ein Gewicht von 30 bis 500 ein: ";
+		if(weight<30 || weight>500) std::cerr<<"ERROR: Das eingegebene Gewicht ist nicht im Wertebereich. Bitte gib ein Gewicht von 30 bis 500 ein: ";
 	}while(weight<30 || weight>500);
 	
 	std::cout<<"\nDein BMI ist: "<<weight/(height*height);

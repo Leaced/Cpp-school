@@ -23,12 +23,12 @@ int main()
 			a = 0;
 			std::stringstream(input) >> alpha;
 			alpha = alpha/180*PI;
-			if(alpha>=PI || alpha<=0) std::cout << "ERROR: Mit dem eingegebenen Winkel l\x84sst sich kein Dreieck konstruieren. Gib alpha oder a erneut ein: ";
+			if(alpha>=PI || alpha<=0) std::cerr << "ERROR: Mit dem eingegebenen Winkel l\x84sst sich kein Dreieck konstruieren. Gib alpha oder a erneut ein: ";
 		}
 		else
 		{
 			std::stringstream(input) >> a;
-			if(a<=0) std::cout << "ERROR: a muss gr\x94\xE1 \ber als 0 sein. Gib a oder alpha erneut ein: ";
+			if(a<=0) std::cerr << "ERROR: a muss gr\x94\xE1 \ber als 0 sein. Gib a oder alpha erneut ein: ";
 		}
 	}while(alpha>=PI || a+alpha<=0);
 	
@@ -44,12 +44,12 @@ int main()
 			b = 0;
 			std::stringstream(input) >> beta;
 			beta = beta/180*PI;
-			if(alpha+beta>=PI || beta<=0) std::cout << "ERROR: Mit den eingegebenen Winkeln l\x84sst sich kein Dreieck konstruieren. Gib beta oder b erneut ein: ";
+			if(alpha+beta>=PI || beta<=0) std::cerr << "ERROR: Mit den eingegebenen Winkeln l\x84sst sich kein Dreieck konstruieren. Gib beta oder b erneut ein: ";
 		}
 		else
 		{
 			std::stringstream(input) >> b;
-			if(b<=0) std::cout << "ERROR: b muss gr\x94\xE1 \ber als 0 sein. Gib b oder beta erneut ein: ";
+			if(b<=0) std::cerr << "ERROR: b muss gr\x94\xE1 \ber als 0 sein. Gib b oder beta erneut ein: ";
 		}
 	}while(alpha+beta>=PI || b+beta<=0);
 	
@@ -63,18 +63,18 @@ int main()
 		if(c!=0)
 		{
 			c = 0;
-			if(alpha!=0 && beta!=0) std::cout << "ERROR: Der Kongruenzsatz WWW existiert nicht. Gib gamma oder c erneut ein: ";
+			if(alpha!=0 && beta!=0) std::cerr << "ERROR: Der Kongruenzsatz WWW existiert nicht. Gib gamma oder c erneut ein: ";
 			else
 			{
 				std::stringstream(input) >> gamma;
 				gamma = gamma/180*PI;
-				if(alpha+beta+gamma>=PI || gamma<=0) std::cout << "ERROR: Mit den eingegebenen Winkeln l\x84sst sich kein Dreieck konstruieren. Gib gamma oder c erneut ein: ";
+				if(alpha+beta+gamma>=PI || gamma<=0) std::cerr << "ERROR: Mit den eingegebenen Winkeln l\x84sst sich kein Dreieck konstruieren. Gib gamma oder c erneut ein: ";
 			}
 		}
 		else
 		{
 			std::stringstream(input) >> c;
-			if(c<=0) std::cout << "ERROR: c muss gr\x94\xE1 \ber als 0 sein. Gib c oder gamma erneut ein: ";
+			if(c<=0) std::cerr << "ERROR: c muss gr\x94\xE1 \ber als 0 sein. Gib c oder gamma erneut ein: ";
 		}
 	}while(alpha+beta+gamma>PI || c+gamma<=0);
 	
