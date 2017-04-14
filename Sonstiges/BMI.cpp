@@ -19,7 +19,6 @@ int main()
 	}while(height<0,5 || height>2.5);
 	
 	std::cout<<"...und jetzt dein Gewicht in Kilogramm: ";
-	
 	do
 	{
 		getline(std::cin,input);
