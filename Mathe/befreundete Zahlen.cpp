@@ -14,6 +14,8 @@ void program();
 
 int main()
 {
+	std::cout<< "Gib ein Limit ein: ";
+	
 	program();
 	
 	std::cout << "\n\nProgrammende!";
@@ -34,11 +36,11 @@ void program()
 	unsigned long long limit = 0;
 	std::string input;
 	
-	do{
-		std::cout<< "Gib ein Limit ein: ";	
+	do
+	{
 		getline(std::cin, input);
 		std::stringstream(input)>>limit;
-		if(limit>=ULLONG_MAX || limit<0) std::cerr << "Error: Dieses Limit ist nicht m\x94glich. ";
+		if(limit>=ULLONG_MAX || limit<0) std::cerr << "Error: Dieses Limit ist nicht m\x94glich. Gib ein anderes Limit ein: ";
 	}while(limit>=ULLONG_MAX || limit<0);
 	
 	try
@@ -57,8 +59,12 @@ void program()
 	}
 	catch(std::bad_alloc& ba)
 	{
-		std::cerr << "Error: Es konnte kein Array dieser Gr\x94\xE1 \be erstellt werden. ";
+		std::cerr << "Error: Es konnte kein Array dieser Gr\x94\xE1 \be erstellt werden. Gib ein anderes Limit ein: ";
 		program();
 	}
-	
+	catch(std::exception& e)
+	{
+		std::cerr << "Error: Beim Erstellen des Arrays ist ein unbekannter Fehler aufgetreten. Gib ein anderes Limit ein: ";
+		program();
+	}
 }
