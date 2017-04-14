@@ -3,7 +3,10 @@
 using namespace std;
 long double Kommazahl(const std::string& str)
 {
-	/*long double Zahl; //Alternative mit stold welche in der Deklaration der Nebenfunktion zusätzlich einen boolean wert benötigt ob es mt oder ohne Kommas arbeiten soll
+	//Alternative mit stold welche in der Deklaration der Nebenfunktion zusätzlich einen Boolean benötigt,
+	//welcher angibt ob es mt oder ohne Kommas arbeiten soll
+	
+	/*long double Zahl; 
 	bool Minus = false;
 	std::string::size_type idx;
 	std::string FNum = "";
