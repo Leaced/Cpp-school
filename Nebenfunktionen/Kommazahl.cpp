@@ -1,50 +1,50 @@
 #include<iostream>
 
-using namespace std;
-long double Kommazahl(const std::string& str)
+long double stringToFloat(const std::string& strng, bool decimalPoint)
 {
-	//Alternative mit stold welche in der Deklaration der Nebenfunktion zusätzlich einen Boolean benötigt,
-	//welcher angibt ob es mt oder ohne Kommas arbeiten soll
+	/*Alternative mit stold welche in der Deklaration der Nebenfunktion zusätzlich einen Boolean "Komma" benötigt,
+	welcher angibt ob es mt oder ohne Kommas arbeiten soll
 	
-	/*long double Zahl; 
-	bool Minus = false;
+	long double number; 
+	bool minus = false;
 	std::string::size_type idx;
 	std::string FNum = "";
 	
 	for(char c:str)
 	{
 		if(c>='0' && c<='9') FNum += c;
-		else if(c == '-') Minus = true;
-		else if((c=='.' || c==',') && Komma) Komma = false, FNum += c;
+		else if(c == '-') minus = true;
+		else if((c=='.' || c==',') && decimalPoint) decimalPoint = false, FNum += c;
 	}
 	
-	Zahl = std::stold(FNum,&idx);
-	if(Minus) Zahl*=-1;
-	return(Zahl);*/
+	number = std::stold(FNum, &idx);
 	
-	bool Komma=false, Minus=false;
-	long double Zahl = 0;
-	unsigned short Stelle = 0;
-	for(char c : str)
+	if(minus) Zahl*=-1;
+	
+	return(number);*/
+	
+	bool DP = false;
+	long double number;
+	unsigned short place = 0;
+	
+	for(char c : strng)
 	{
 		if(c>='0' && c<='9')
 		{
-			if(Komma == false)
-			{
-				Zahl *= 10;
-				Zahl += c - '0';
-			}
+			c = c-'0';
+			
+			if(!DP) number = number*10+c;
 			else
 			{
-				long double Zahl2 = c - '0';
-				for(unsigned short idx = 0; idx <= Stelle; idx++) Zahl2/=10;
-				Zahl += Zahl2;
-				Stelle++;
+				long double number2 = c;
+				
+				for(unsigned short loop = 0;  loop<=place;  loop++) number2 /= 10;
+				
+				number += number2, place++;
 			}
 		}
-		else if(c=='.') Komma=true;
-		else if(c=='-') Minus=true;
+		else if((c=='.' || c==',') && decimalPoint) DP=true;
 	}
-	if(Minus==true) Zahl*=-1;
-	return(Zahl);
+	
+	return(number);
 }
