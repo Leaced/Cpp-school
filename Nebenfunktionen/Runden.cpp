@@ -1,17 +1,18 @@
-#include <iostream>
+#include<iostream>
 
-long double Runden(long double Zahl, int NK=0, bool mathematisch=true)
-{
-	//Rückgabe Zahl auf NK Nachkommastellen gerundet
-	long long Schleife;
+long double round(long double number, long long digitsAfterDecimalPoint, bool mathematical)
+{	
+	short loop = digitsAfterDecimalPoint;
 	
-	for(Schleife=NK;Schleife>0;Schleife--) Zahl*=10;
-	for(Schleife=NK;Schleife<0;Schleife++) Zahl/=10;
-	if(Zahl-(long long)Zahl>0.5 || Zahl-(long long)Zahl==0.5 && (mathematisch=false || (long long)Zahl%2!=0)) Zahl++;
+	while(loop>0) number *= 10, loop--;
+	while(loop<0) number /= 10, loop++;
 	
-	Zahl=(long long)Zahl;
-	for(Schleife=NK;Schleife>0;Schleife--) Zahl/=10;
-	for(Schleife=NK;Schleife<0;Schleife++) Zahl*=10;
+	if(number-(long long)number>0.5 || number-(long long)number==0.5 && ((long long)number%2!=0 || mathematical==false)) number++;
 	
-	return(Zahl);
+	number = (long long)number;
+	
+	while(digitsAfterDecimalPoint>0) number /= 10, digitsAfterDecimalPoint--;
+	while(digitsAfterDecimalPoint<0) number *= 10, digitsAfterDecimalPoint++;
+	
+	return(number);
 }
