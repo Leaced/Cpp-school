@@ -15,8 +15,8 @@ int main()
 	{
 		getline(std::cin,input);
 		std::stringstream(input)>>height;
-		if(height<0,5 || height>2.5) std::cerr<<"ERROR: Die eingegebene Gr\x94\xE1 \be ist nicht im Wertebereich. Bitte gib eine Gr\x94\xE1 \be von 0,5 bis 2,5 ein: ";
-	}while(height<0,5 || height>2.5);
+		if(height<0.5 || height>2.5) std::cerr<<"ERROR: Die eingegebene Gr\x94\xE1 \be ist nicht im Wertebereich. Bitte gib eine Gr\x94\xE1 \be von 0,5 bis 2,5 ein: ";
+	}while(height<0.5 || height>2.5);
 	
 	std::cout<<"...und jetzt dein Gewicht in Kilogramm: ";
 	do
