@@ -16,7 +16,7 @@ int main()
 		srand(time(NULL));
 		short randNumber = rand()%100+1, tries = 0, number;
 
-		std::cout << "Errate die richtige Zahl zwischen 1 und 100: ";
+		printf("Errate die richtige Zahl zwischen 1 und 100: ");
 		
 		do
 		{		
@@ -24,17 +24,17 @@ int main()
 			getline(std::cin, input);
 			std::stringstream(input) >> number;
 			
-			if(number<1 || number>100) std::cerr << "Error: Die eingegebene Zahl liegt nicht im Wertebereich. Gib eine Zahl zwischen 1 und 100 ein: ";
-			else if(number<randNumber) std::cout << "\nDie eingegebene Zahl ist zu klein! Versuche es erneut: ";		
-			else if(number>randNumber) std::cout << "\nDie eingegebene Zahl ist zu gro\xE1! Versuche es erneut: ";		
+			if(number<1 || number>100) printf("Error: Die eingegebene Zahl liegt nicht im Wertebereich. Gib eine Zahl zwischen 1 und 100 ein: ");
+			else if(number<randNumber) printf("\nDie eingegebene Zahl ist zu klein! Versuche es erneut: ");		
+			else if(number>randNumber) printf("\nDie eingegebene Zahl ist zu gro\xE1! Versuche es erneut: ");		
 		}while(number!=randNumber || number<1 || number>100);
 		
-		std::cout << "\nTreffer! Du hast " << tries << " Versuche gebraucht.\nM\x94 \bchtest du ein 2. mal spielen? y/n ";
+		printf("\nTreffer! Du hast %i Versuche gebraucht.\nM\x94 \bchtest du ein 2. mal spielen? y/n ", tries);
 		do
 		{
 			getline(std::cin, input);
-			if(input != "y" && input != "Y" && input != "n" && input !="N") std::cerr << "Error: Die Eingabe ist ung\x81ltig. M\x94 \bchtest du ein 2. mal spielen? y/n ";
-			else std::cout << "\n\n";
+			if(input != "y" && input != "Y" && input != "n" && input !="N") printf("Error: Die Eingabe ist ung\x81ltig. M\x94 \bchtest du ein 2. mal spielen? y/n ");
+			else printf("\n\n");
 		}while(input != "y" && input != "Y" && input != "n" && input !="N");
 	}while(input == "y" || input ==  "Y");
 	
